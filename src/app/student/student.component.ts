@@ -10,15 +10,27 @@ export class StudentComponent implements OnInit {
 
   profileName =new FormGroup({
     firstName : new FormControl(''),
-    lastName : new FormControl('')
+    lastName : new FormControl(''),
+    emailPassword: new FormGroup({
+      email: new FormControl(''),
+      password: new FormControl('')
+    }),
+    address: new FormGroup({
+      city: new FormControl(''),
+      state: new FormControl(''),
+      zip: new FormControl('')
+    })
   })
+  
+  gender= new FormControl('')
+  checkBox=new FormControl([])
 
   constructor() { }
 
   ngOnInit(): void {
   }
-  submit(){
-    // alert("success")
+  onSubmit(){
+    console.log(this.profileName.value,this.gender.value)
   }
 
 }

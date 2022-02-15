@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { UserAuthModule } from './user-auth/user-auth.module';
 import { FullTimeJobComponent } from './full-time-job/full-time-job.component';
 import { PartTimeJobComponent } from './part-time-job/part-time-job.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PartTimeJobComponent } from './part-time-job/part-time-job.component';
     BrowserModule,
     AppRoutingModule,
     UserAuthModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
