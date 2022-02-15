@@ -1,1 +1,15 @@
-<h2>student works!</h2>
+
+<div style="background-color: wheat;">
+    <form [formGroup]="profileName">
+        <label>First Name</label>
+        <input type="text" name="firstName" formControlName="firstName"/>
+        <br>
+        <label>Last Name</label>
+        <input type="text" name="lastName" formControlName="lastName"/>
+        <br>
+        <br>
+        <button (click)="submit()">Submit</button>
+        <br>
+        <p>{{profileName.value | json}}</p>
+    </form>
+</div>
