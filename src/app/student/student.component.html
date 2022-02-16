@@ -55,20 +55,23 @@
         <div class="form-check">
             <label for="inputRadio">Gender</label>
             <div class="form-check ">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="male" [formControl]="gender"
+                <input class="form-check-input" type="radio" name="gender" id="exampleRadios1" value="male" formControlName="gender"
                     checked>
                 <label class="form-check-label" for="exampleRadios1">
                     Male
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="female" [formControl]="gender">
+                <input class="form-check-input" type="radio" name="gender" id="exampleRadios2" value="female" formControlName="gender">
                 <label class="form-check-label" for="exampleRadios2">
                     Female
                 </label>
             </div>
         </div>
         <button type="submit" class="btn btn-success" [disabled]="!profileName.valid">Submit</button>
+        <br/>
+        <br>
+        <button type="button" class="btn btn-info" (click)="setData()">Set Data</button>
     </form>
 
     <div>{{profileName.valid}}</div>
