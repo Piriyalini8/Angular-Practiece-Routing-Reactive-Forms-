@@ -6,10 +6,20 @@
                     <label for="inputEmail4">First Name</label>
                     <input type="text" class="form-control col-xs-4" placeholder="First name"
                         formControlName="firstName">
+                        <div *ngIf="profileName.controls['firstName'].invalid && 
+                        (profileName.controls['firstName'].dirty || profileName.controls['firstName'].touched)">
+                        <span class="help-text text-danger" *ngIf="profileName.get('firstName')?.errors?.['required']">First Name is Required</span>
+                    <span class="help-text text-danger" *ngIf="profileName.get('firstName')?.errors?.['minlength']">First Name must be at least 5 characters</span>
+                        </div>
                 </div>
                 <div class="col">
                     <label for="inputEmail4">Last Name</label>
                     <input type="text" class="form-control" placeholder="Last name" formControlName="lastName">
+                    <div *ngIf="profileName.controls['lastName'].invalid && 
+                    (profileName.controls['lastName'].dirty || profileName.controls['lastName'].touched)">
+                    <span class="help-text text-danger" *ngIf="profileName.get('lastName')?.errors?.['required']">Last Name is Required</span>
+                    <span class="help-text text-danger" *ngIf="profileName.get('lastName')?.errors?.['minlength']">Last Name must be at least 3 characters</span>
+                    </div>
                 </div>
             </div>
                 <div class="row " formGroupName="emailPassword">
@@ -58,6 +68,9 @@
                 </label>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>
+        <button type="submit" class="btn btn-success" [disabled]="!profileName.valid">Submit</button>
     </form>
+
+    <div>{{profileName.valid}}</div>
 </div>
+

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-student',
@@ -9,8 +9,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class StudentComponent implements OnInit {
 
   profileName =new FormGroup({
-    firstName : new FormControl(''),
-    lastName : new FormControl(''),
+    firstName : new FormControl('',[Validators.required,Validators.minLength(5)]),
+    lastName : new FormControl('',[Validators.required,Validators.minLength(3)]),
     emailPassword: new FormGroup({
       email: new FormControl(''),
       password: new FormControl('')
