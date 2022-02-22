@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-student',
@@ -27,10 +27,11 @@ export class StudentComponent implements OnInit {
 
   constructor(private fb: FormBuilder) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.profileName=this.fb.group({
       firstName:['Hello',[Validators.required,Validators.minLength(5)]],
       lastName:['',[Validators.required,Validators.minLength(3)]],
+      courcesList:this.fb.array([]),
       emailPassword:this.fb.group({
         email:[''],
         password:['']
@@ -41,10 +42,31 @@ export class StudentComponent implements OnInit {
         zip:['']
       }),
       gender:['']
-    })
+      
+    });
+  }
+  get courcesArray() : FormArray{
+    return this.profileName.controls["courcesList"] as FormArray;
+  }
+  checking1:string='f';
+
+  change(){
+    if(this.checking1=='y')
+    this.checking1='f'
+    if(this.checking1=='f')
+    this.checking1='y'
   }
   onSubmit(){
+    if(this.checking1=='y')
+    this.checking1='f'
     console.log(this.profileName.value)
+  }
+  addNew(){
+    const courseFormGroup = this.fb.group({
+      name:[''],
+      duration:['']
+    });
+    this.courcesArray.push(courseFormGroup);
   }
   setData(){
     // this.profileName.setValue({
